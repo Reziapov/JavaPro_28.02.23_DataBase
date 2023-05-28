@@ -13,24 +13,24 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 
     private static final String SAVE =
             """
-                    INSERT INTO public.question (text,topic_id)
+                    INSERT INTO public."question " (text,topic_id)
                     VALUES (?, ?)
                     """;
     private static final String REMOVE =
             """
-                    DELETE FROM public.question
+                    DELETE FROM public."question "
                     WHERE id = ?
                     """;
     private static final String UPDATE =
             """
-                    UPDATE public.question
+                    UPDATE public."question "
                     SET text = ?, topic_id = ?
                     WHERE id = ?
                     """;
     private static final String GET =
             """
-                    SELECT q.id, AS question_id, text, topic.id AS topic_id, name
-                    FROM question AS q
+                    SELECT q.id AS question_id, text, topic_id AS topic_id, name
+                    FROM public."question " AS q
                     JOIN topic AS t ON q.topic_id = t.id
                     WHERE t.id = %s
                                         

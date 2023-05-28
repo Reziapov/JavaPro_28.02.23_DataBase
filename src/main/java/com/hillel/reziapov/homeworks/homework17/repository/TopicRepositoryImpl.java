@@ -13,24 +13,24 @@ public class TopicRepositoryImpl implements TopicRepository {
 
     private static final String SAVE =
             """
-                    INSERT INTO public.topic (name)
+                    INSERT INTO topic (name)
                     VALUES (?)
                     """;
     private static final String REMOVE =
             """
-                    DELETE FROM public.topic
+                    DELETE FROM topic
                     WHERE id = ?
                     """;
     private static final String UPDATE =
             """
-                    UPDATE public.topic
+                    UPDATE topic
                     SET name = ?
                     WHERE id = ?
                     """;
     private static final String GET =
             """
                     SELECT * FROM topic
-                    WHERE name = ?, id = ?;
+                    WHERE (name = ?, id = ?)
                     
                     """;
     private final Connection connection = ConnectionSingleton.getConnection();
